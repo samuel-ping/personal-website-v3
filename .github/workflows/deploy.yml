@@ -19,6 +19,11 @@ jobs:
   client-integration:
     name: integrate-client
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+      deployments: write
+      pages: write
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -34,15 +39,16 @@ jobs:
           npm run build
           npm run export
           touch out/.nojekyll
+          echo "v3.samuelp.ing" > out/CNAME
           echo "# Hi!" > out/README.md
-          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to my [personal-website repository!](https://github.com/samuel-ping/personal-website)!" >> out/README.md
+          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to my website's [main repository!](https://github.com/samuel-ping/samuelp.ing)!" >> out/README.md
           echo "#### Note - This message was automatically generated." >> out/README.md
         working-directory: ./
 
-      - name: push build artifacts to samuel-ping.github.io
+      - name: push build artifacts to self
         uses: s0/git-publish-subdir-action@develop
         env:
-          REPO: git@github.com:samuel-ping/samuel-ping.github.io.git
+          REPO: self
           BRANCH: gh-pages
           FOLDER: ./out
-          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

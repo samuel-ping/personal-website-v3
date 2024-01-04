@@ -1,3 +1,5 @@
+## Note: The source code in this repository comes from [this release](https://github.com/samuel-ping/samuelp.ing/releases/tag/v3.0.0).
+
 # Personal Website
 
 This is my personal website's repository! Hopefully you're here because you like my website.
