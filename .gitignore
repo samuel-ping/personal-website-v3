@@ -1,0 +1,26 @@
+# Frontend
+# Next.js
+.next/
+out/
+
+# service worker
+**/public/workbox-*.js*
+**/public/sw.js*
+**/public/worker-*.js
+
+# Testing
+temp/
+
+
+# Frontend & Backend
+# Dependencies
+node_modules/
+
+# env files
+.env
+
+# debug
+npm-debug.log*
+
+# local
+.vscode
